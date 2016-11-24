@@ -1,7 +1,7 @@
 /**
  * name : jysSelectbox
  * make : parkjonghcan
- * version : 0.2
+ * version : 1.0
  * date : 2016.10.20
  * e-mail:idpjc1@gamil.com //korea
  * @param  {[string]} $ [classNaming:classname],[valNaming:inputValuename]
@@ -31,7 +31,7 @@ function selectJys(selector, options){
 }
 selectJys.defaultOptions = {
     classNaming:'className', // class name setting
-    ckNaming:'forId_', // id,for,name setting
+    ckNaming:'forId_', // delete
     valNaming:'value_' // value setting
 };
 selectJys.prototype._initOptions=function(options){
@@ -54,8 +54,7 @@ selectJys.prototype._init=function(selector){
 selectJys.prototype._onLoad = function(){
 	var val = this._$sublistLi.eq(0).find('a').text();
 	var s1 = this._$sublistLi.eq(0).find("input:checkbox").prop('checked', true);
-	this._$textval.text(val);
-	this._$textval.attr('value',val);
+	this._$textval.children().text(val);
 };
 selectJys.prototype._addList = function(){
 	var objthis =this;
@@ -68,51 +67,35 @@ selectJys.prototype._addList = function(){
 	this._onLoad();
 };
 selectJys.prototype._initEvent=function(){
-    var objThis = this;
-    this._$textval.on('click',function(e){
-      e.preventDefault();
-        if(objThis._$textval.hasClass('down')){
-            objThis._$textval.removeClass('down');
-            objThis._$textval.addClass('up');
-            objThis._$selectBox.css({'top':objThis._$boxHeight});
-            objThis._$sublist.slideDown(300);
-            objThis.showText();
-        }else{
-            objThis._$textval.removeClass('up');
-            objThis._$textval.addClass('down');
-            objThis._$sublist.delay(500).slideUp(300);
-            objThis.hideText();
-        }
-    });
-    /*this._$arrow.on('click',function(e){
-      e.preventDefault();
-        if(objThis._$arrow.hasClass('down')){
-            objThis._$arrow.removeClass('down');
-            objThis._$arrow.addClass('up');
-            objThis._$sublist.css({'top':objThis._$boxHeight});
-            objThis._$sublist.slideDown(300);
-            objThis.showText();
-        }else{
-            objThis._$arrow.removeClass('up');
-            objThis._$arrow.addClass('down');
-            objThis._$sublist.delay(500).slideUp(300);
-            objThis.hideText();
+  var objThis = this;
+  this._$textval.on('click',function(e){
+    e.preventDefault();
+      if(objThis._$textval.hasClass('down')){
+          objThis._$textval.removeClass('down');
+          objThis._$textval.addClass('up');
+          objThis._$selectBox.css({'top':objThis._$boxHeight});
+          objThis._$sublist.slideDown(300);
+          objThis.showText();
+      }else{
+          objThis._$textval.removeClass('up');
+          objThis._$textval.addClass('down');
+          objThis._$sublist.delay(500).slideUp(300);
+          objThis.hideText();
+      }
+  });
 
-        }
-    });*/
-    this._$sublistLabel.on('click',function(e){
-      e.preventDefault();
-      e.stopPropagation();
-      objThis._$sublistLabel.children();
-      objThis._$sublistLabel.children().prop('checked',false);
-      $(this).children().prop('checked',true);
-      var val = $(this).text();
-      objThis._$textval.text(val);
-      objThis._$textval.attr('value',val);
-      objThis._$textval.removeClass('up');
-      objThis._$textval.addClass('down');
-      objThis._$sublist.delay(800).slideUp(300);
-      objThis.selectText(objThis._$sublistLabel.index(this));
+  this._$sublistLabel.on('click',function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    objThis._$sublistLabel.children();
+    objThis._$sublistLabel.children().prop('checked',false);
+    $(this).children().prop('checked',true);
+    var val = $(this).text();
+    objThis._$textval.children().text(val);
+    objThis._$textval.removeClass('up');
+    objThis._$textval.addClass('down');
+    objThis._$sublist.delay(800).slideUp(300);
+    objThis.selectText(objThis._$sublistLabel.index(this));
 
     });
     this._$sublistLi.on('mouseover',function(e){
@@ -149,12 +132,14 @@ selectJys.prototype.selectText=function(idx){
       objThis._$sublistLabel.attr('style','');
     });
   });
+  objThis._$textval.children().animate({'margin-left': - objThis._$cntWidth},function(){
+    objThis._$textval.children().delay(500).animate({'margin-left': 0});
+  });
 };
 selectJys.prototype._selected=function(ar){
   var val = this._$sublistLi.eq(ar).text();
   if(ar !== undefined){
-    this._$textval.text(val);
-    this._$textval.attr('value',val);
+
   }
   else{
     return;
