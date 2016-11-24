@@ -26,7 +26,7 @@ function selectJys(selector, options){
     this._options = null;
     this._init(selector);
     this._initOptions(options);
-    this._initEvent();   
+    this._initEvent();
     this._addList();
 }
 selectJys.defaultOptions = {
@@ -40,18 +40,18 @@ selectJys.prototype._initOptions=function(options){
 selectJys.prototype._init=function(selector){
     this.$jySselect = $(selector);
     this._$cntWidth = this.$jySselect.width() - 2;
-    this._$selectBox = this.$jySselect.find('.select');
-    this._$textval = this.$jySselect.find(".selecttext");
+    this._$selectBox = this.$jySselect.find('.option');
+    this._$textval = this.$jySselect.find("a.selecttext");
     this._$arrow =  this.$jySselect.find('.select-arrow');
     this._$boxHeight = this.$jySselect.outerHeight();
     this._$sublist = this._$selectBox.find('ul');
     this._$sublistLi = this._$selectBox.find('ul li');
-    this._$sublistLabel = this._$sublistLi.find('label')
+    this._$sublistLabel = this._$sublistLi.find('a')
     this._$sublist.css({'width':this._$cntWidth})
 
 };
 selectJys.prototype._onLoad = function(){
-	var val = this._$sublistLi.eq(0).find('label').text();
+	var val = this._$sublistLi.eq(0).find('a').text();
 	var s1 = this._$sublistLi.eq(0).find("input:checkbox").prop('checked', true);
 	this._$textval.text(val);
 	this._$textval.attr('value',val);
@@ -63,11 +63,12 @@ selectJys.prototype._addList = function(){
 	 	$(this).children().children().attr('for', objthis._options.ckNaming + index)
 	 	$(this).children().append("<input type='checkbox' class=" + objthis._options.classNaming + " name=" + objthis._options.classNaming + " value=" + objthis._options.valNaming + index + " id=" + objthis._options.ckNaming + index + ">")
 	});
-	this._onLoad(); 
+	this._onLoad();
 }
 selectJys.prototype._initEvent=function(){
     var objThis = this;
-    this._$textval.on('click',function(){
+    this._$textval.on('click',function(e){
+      e.preventDefault();
         if(objThis._$arrow.hasClass('down')){
             objThis._$arrow.removeClass('down');
             objThis._$arrow.addClass('up');
@@ -79,7 +80,8 @@ selectJys.prototype._initEvent=function(){
             objThis._$sublist.slideUp(300);
         }
     });
-    this._$arrow.on('click',function(){
+    this._$arrow.on('click',function(e){
+      e.preventDefault();
         if(objThis._$arrow.hasClass('down')){
             objThis._$arrow.removeClass('down');
             objThis._$arrow.addClass('up');
@@ -92,9 +94,11 @@ selectJys.prototype._initEvent=function(){
 
         }
     });
-    this._$sublistLabel.on('click',function(){
-    	  unique = '.'+objThis._options.classNaming;
-    	  $(unique).filter(':checked').not(this).removeAttr('checked');
+    this._$sublistLabel.on('click',function(e){
+          e.preventDefault();
+          objThis._$sublistLabel.children();
+          objThis._$sublistLabel.children().prop('checked',false);
+          $(this).children().prop('checked',true);
           var val = $(this).text();
           objThis._$textval.text(val);
           objThis._$textval.attr('value',val);
@@ -107,11 +111,11 @@ selectJys.prototype.chbrF=function(ar){
 	var UserAgent = navigator.userAgent;
 	if (UserAgent.match(/iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson|X11/i) != null ||UserAgent.match(/LG|SAMSUNG|Samsung/) != null)
 	{
-		return 1
+		return 1;
 	}else{
-		return 0
+		return 0;
 	}
-}
+};
 selectJys.prototype._selected=function(ar){
   var val = this._$sublistLi.eq(ar).text();
   if(ar !== undefined){
@@ -122,4 +126,3 @@ selectJys.prototype._selected=function(ar){
     return;
   }
 };
-

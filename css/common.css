@@ -20,18 +20,19 @@ table { border-collapse: collapse; border-spacing: 0; }
 a, a:link, a:visited, a:active, a:hover, a, a:active, a:visited { color: inherit; text-decoration: none; }
 
 /*style*/
-.search_wrap { padding:100px;}
-.search_wrap ul.search_list:after {clear:both; display:block; content:'';}
-.search_wrap ul.search_list > li {float:left; width:20%; margin:0 10px; }
-.search_wrap ul.search_list .selectbox {position: relative;}
-.search_wrap ul.search_list .selectbox .select {position: absolute; width:100%; background:#fff; z-index:200;}
-.search_wrap ul.search_list .selectbox .select ul.sub_list {display:none; border-left:1px solid #a8a8a8; border-right:1px solid #a8a8a8; border-bottom:1px solid #a8a8a8;}
-.search_wrap ul.search_list .selectbox .select ul.sub_list li{position:relative; text-indent:10px;}
-.search_wrap ul.search_list .selectbox .select ul.sub_list li label {display:block; cursor:pointer;padding:10px 0;}
-.search_wrap ul.search_list .selectbox .select ul.sub_list li input[type="checkbox"] {position:absolute; left:0; top:0; opacity:0; filter: alpha(opacity=0); z-index:-1;}
-.search_wrap ul.search_list .selectbox .select ul.sub_list li:hover{background:#555; color:#fff;}
-.search_wrap ul.search_list .selectbox .selecttext {height:30px;border: 1px solid #a8a8a8; padding:12px 0 0 17px; background: #fff; text-align:left; color:#555; cursor:pointer; z-index: 9;}
-.search_wrap ul.search_list .selectbox .select-arrow{position:absolute;top:1px;right:0; display:block; width:36px;  height:42px;  z-index:10;}
-.search_wrap ul.search_list .selectbox .select-arrow.down{background:url('../images/common/select_arrow_down.gif') no-repeat center center;}
-.search_wrap ul.search_list .selectbox .select-arrow.up{background:url('../images/common/select_arrow_up.gif') no-repeat center center;}
 
+.selectbox {position: relative;}
+
+.selectbox .option {position: absolute; width:100%; background:#fff; z-index:200;}
+.selectbox .option ul.sub_list {display:none; border-left:1px solid #a8a8a8; border-right:1px solid #a8a8a8; border-bottom:1px solid #a8a8a8;}
+.selectbox .option ul.sub_list li{overflow:hidden; position:relative;}
+.selectbox .option ul.sub_list li > a {display:block; padding:10px 0 10px 17px; color:#555}
+.selectbox .option ul.sub_list li > a:hover{background:#555; color:#fff; -webkit-transition:.7s; -moz-transition:.7s; -o-transition:.7s; -ms-transition:.7s; transition:.7s;}
+
+.selectbox .option ul.sub_list li input[type="checkbox"] {display:none}
+
+.selectbox a.selecttext {display:block; height:30px;border: 1px solid #a8a8a8; padding:12px 0 0 17px; background: #fff; text-align:left; color:#555; cursor:pointer; z-index: 9;}
+
+.selectbox .select-arrow{position:absolute;top:1px;right:0; display:block; width:36px;  height:42px;  z-index:10;}
+.selectbox .select-arrow.down{background:url('../images/common/select_arrow_down.gif') no-repeat center center;}
+.selectbox .select-arrow.up{background:url('../images/common/select_arrow_up.gif') no-repeat center center;}

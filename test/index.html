@@ -13,65 +13,107 @@
 <script src="../js/jys.selectbox.js"></script>
 </head>
 <!--[if lte IE 9]>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
 <![endif]-->
 <body>
 <!--select box-->
-		<div class="search_wrap">
-			<ul class="search_list">
-			<li>
-				 <div id="selectbox-1" class="selectbox">
-				 	<div class="selecttext"></div><span class="select-arrow down"></span>
-					<div class="select">
-						<ul class="sub_list">
-							<li><a href="" title="" class=""><label for="">ALL</label></a></li>
-							<li><a href="" title="" class=""><label for="">AB</label></a></li>
-							<li><a href="" title="" class=""><label for="">CD</label></a></li>
-							<li><a href="" title="" class=""><label for="">DE</label></a></li>
-							<li><a href="" title="" class=""><label for="">GH</label></a></li>
-							<li><a href="" title="" class=""><label for="">HI</label></a></li>
-							<li><a href="" title="" class=""><label for="">JK</label></a></li>
-						</ul>
-					</div>
-				 </div>
-			</li>
-			<li>
-				<div id="selectbox-2" class="selectbox">
-					<div class="selecttext"></div><span class="select-arrow down"></span>
-					<div class="select">
-						<ul class="sub_list">
-							<li><a href="" title="" class=""><label for="">CITY/ADRESS</label></a></li>
-							<li><a href="" title="" class=""><label for="">SEOUL</label></a></li>
-							<li><a href="" title="" class=""><label for="">New York</label></a></li>
-							<li><a href="" title="" class=""><label for="">Hong Kong</label></a></li>
-							<li><a href="" title="" class=""><label for="">Bangkok</label></a></li>
-						</ul>
-					</div>
-				</div>				
-			</li>
-			<li>
-				<div id="selectbox-3" class="selectbox">
-					<div class="selecttext"></div><span class="select-arrow down"></span>
-					<div class="select">
-						<ul class="sub_list">
-						<li><a href="" title="" class=""><label for="">SELECT BOX</label></a></li>
-						<li><a href="" title="" class=""><label for="">Banana</label></a></li>
-						<li><a href="" title="" class=""><label for="">Apple</label></a></li>
-						</ul>
-					</div>
-				</div>				
-			</li>
+<style media="screen">
+	.test_box {float:left; width:200px; margin:50px 10px;}
+</style>
+<div class="test_box">
+
+	<!--selectbox-->
+	<div id="selectbox-1" class="selectbox">
+		<a href="" class="selecttext"></a>
+		<span class="select-arrow down"></span>
+		<div class="option">
+			<ul class="sub_list">
+				<li>
+					<a href="" title="" class="">ALL</a>
+				</li>
+				<li>
+					<a href="" title="" class="">AA</a>
+				</li>
 			</ul>
 		</div>
+	</div><!--selectbox end-->
+
+</div>
+
+<div class="test_box">
+
+	<!--selectbox-->
+	<div id="selectbox-2" class="selectbox">
+		<a href="" class="selecttext"></a>
+		<span class="select-arrow down"></span>
+		<div class="option">
+			<ul class="sub_list">
+				<li>
+					<a href="" title="" class="">ALL</a>
+				</li>
+				<li>
+					<a href="" title="" class="">AA</a>
+				</li>
+				<li>
+					<a href="" title="" class="">BB</a>
+				</li>
+				<li>
+					<a href="" title="" class="">CC</a>
+				</li>
+			</ul>
+		</div>
+	</div><!--selectbox end-->
+
+</div>
+
+<div class="test_box">
+
+	<!--selectbox-->
+	<div id="selectbox-3" class="selectbox">
+		<a href="" class="selecttext"></a>
+		<span class="select-arrow down"></span>
+		<div class="option">
+			<ul class="sub_list">
+				<li>
+					<a href="" title="" class="">ALL</a>
+				</li>
+				<li>
+					<a href="" title="" class="">AA</a>
+				</li>
+				<li>
+					<a href="" title="" class="">BB</a>
+				</li>
+				<li>
+					<a href="" title="" class="">CC</a>
+				</li>
+				<li>
+					<a href="" title="" class="">ALL</a>
+				</li>
+				<li>
+					<a href="" title="" class="">AA</a>
+				</li>
+				<li>
+					<a href="" title="" class="">BB</a>
+				</li>
+				<li>
+					<a href="" title="" class="">CC</a>
+				</li>				
+			</ul>
+		</div>
+	</div><!--selectbox end-->
+
+</div>
+
+
+
 <script type="text/javascript">
 <!--
 	$(document).ready(function(){
-	var select1 = $("#selectbox-1").jySselect({classNaming:'ckbox1',ckNaming:'ckbox1_',valNaming:'ckbox1_data_'});
-	var select2 = $("#selectbox-2").jySselect({classNaming:'ckbox2',ckNaming:'ckbox2_',valNaming:'ckbox2_data_'});
-	var select3 = $("#selectbox-3").jySselect({classNaming:'ckbox3',ckNaming:'ckbox3_',valNaming:'ckbox3_data_'});
+	var select1 = $("#selectbox-1").jySselect({classNaming:'ckbox1', valNaming:'ckbox1_data_'});
+	var select2 = $("#selectbox-2").jySselect({classNaming:'ckbox2', valNaming:'ckbox2_data_'});
+	var select3 = $("#selectbox-3").jySselect({classNaming:'ckbox3', valNaming:'ckbox3_data_'});
 	});
 //-->
-</script>		
+</script>
 </body>
 </html>
-
