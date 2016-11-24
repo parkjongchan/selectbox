@@ -26,13 +26,14 @@ a, a:link, a:visited, a:active, a:hover, a, a:active, a:visited { color: inherit
 .selectbox .option {position: absolute; width:100%; background:#fff; z-index:200;}
 .selectbox .option ul.sub_list {display:none; border-left:1px solid #a8a8a8; border-right:1px solid #a8a8a8; border-bottom:1px solid #a8a8a8;}
 .selectbox .option ul.sub_list li{overflow:hidden; position:relative;}
-.selectbox .option ul.sub_list li > a {display:block; padding:10px 0 10px 17px; color:#555; opacity:0; filter: alpha(opacity=50);}
-.selectbox .option ul.sub_list li > a:hover{background:#555; color:#fff;}
+.selectbox .option ul.sub_list li span.bg_move {position:absolute; left:0; top:0; width:0%; height:100%; display:block; background:#555; z-index:-1}
+.selectbox .option ul.sub_list li > a {position:relative; display:block; padding:10px 0 10px 17px; color:#555; opacity:0; filter: alpha(opacity=50); z-index:50}
+.selectbox .option ul.sub_list li > a:hover{color:#fff;}
 
 .selectbox .option ul.sub_list li input[type="checkbox"] {display:none}
 
 .selectbox a.selecttext {display:block; height:30px;border: 1px solid #a8a8a8; padding:12px 0 0 17px; background: #fff; text-align:left; color:#555; cursor:pointer; z-index: 9;}
+.selectbox a.selecttext.down{background:url('../images/common/select_arrow_down.gif') no-repeat 95% center;}
+.selectbox a.selecttext.up{background:url('../images/common/select_arrow_up.gif') no-repeat 95% center;}
 
 .selectbox .select-arrow{position:absolute;top:1px;right:0; display:block; width:36px;  height:42px;  z-index:10; cursor:pointer}
-.selectbox .select-arrow.down{background:url('../images/common/select_arrow_down.gif') no-repeat center center;}
-.selectbox .select-arrow.up{background:url('../images/common/select_arrow_up.gif') no-repeat center center;}
