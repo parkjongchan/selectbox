@@ -46,8 +46,9 @@ selectJys.prototype._init=function(selector){
     this._$boxHeight = this.$jySselect.outerHeight();
     this._$sublist = this._$selectBox.find('ul');
     this._$sublistLi = this._$selectBox.find('ul li');
-    this._$sublistLabel = this._$sublistLi.find('a')
-    this._$sublist.css({'width':this._$cntWidth})
+    this._$sublistLabel = this._$sublistLi.find('a');
+    this._$sublist.css({'width':this._$cntWidth});
+    this._$sublistLabel.css({opacity:0});
 
 };
 selectJys.prototype._onLoad = function(){
@@ -55,16 +56,16 @@ selectJys.prototype._onLoad = function(){
 	var s1 = this._$sublistLi.eq(0).find("input:checkbox").prop('checked', true);
 	this._$textval.text(val);
 	this._$textval.attr('value',val);
-}
+};
 selectJys.prototype._addList = function(){
 	var objthis =this;
 	this._$addcheck = this._$sublistLi;
 	$(this._$addcheck).each(function( index ) {
-	 	$(this).children().children().attr('for', objthis._options.ckNaming + index)
-	 	$(this).children().append("<input type='checkbox' class=" + objthis._options.classNaming + " name=" + objthis._options.classNaming + " value=" + objthis._options.valNaming + index + " id=" + objthis._options.ckNaming + index + ">")
+	 	$(this).children().children().attr('for', objthis._options.ckNaming + index);
+	 	$(this).children().append("<input type='checkbox' class=" + objthis._options.classNaming + " name=" + objthis._options.classNaming + " value=" + objthis._options.valNaming + index + " id=" + objthis._options.ckNaming + index + ">");
 	});
 	this._onLoad();
-}
+};
 selectJys.prototype._initEvent=function(){
     var objThis = this;
     this._$textval.on('click',function(e){
@@ -74,10 +75,12 @@ selectJys.prototype._initEvent=function(){
             objThis._$arrow.addClass('up');
             objThis._$selectBox.css({'top':objThis._$boxHeight});
             objThis._$sublist.slideDown(300);
+            objThis.showText();
         }else{
             objThis._$arrow.removeClass('up');
             objThis._$arrow.addClass('down');
-            objThis._$sublist.slideUp(300);
+            objThis._$sublist.delay(500).slideUp(300);
+            objThis.hideText();
         }
     });
     this._$arrow.on('click',function(e){
@@ -87,15 +90,18 @@ selectJys.prototype._initEvent=function(){
             objThis._$arrow.addClass('up');
             objThis._$sublist.css({'top':objThis._$boxHeight});
             objThis._$sublist.slideDown(300);
+            objThis.showText();
         }else{
             objThis._$arrow.removeClass('up');
             objThis._$arrow.addClass('down');
-            objThis._$sublist.slideUp(300);
+            objThis._$sublist.delay(500).slideUp(300);
+            objThis.hideText();
 
         }
     });
     this._$sublistLabel.on('click',function(e){
           e.preventDefault();
+          e.stopPropagation();
           objThis._$sublistLabel.children();
           objThis._$sublistLabel.children().prop('checked',false);
           $(this).children().prop('checked',true);
@@ -104,7 +110,9 @@ selectJys.prototype._initEvent=function(){
           objThis._$textval.attr('value',val);
           objThis._$arrow.removeClass('up');
           objThis._$arrow.addClass('down');
-          objThis._$sublist.slideUp(300);
+          objThis._$sublist.delay(800).slideUp(300);
+          objThis.selectText(objThis._$sublistLabel.index(this));
+
     });
 };
 selectJys.prototype.chbrF=function(ar){
@@ -115,6 +123,26 @@ selectJys.prototype.chbrF=function(ar){
 	}else{
 		return 0;
 	}
+};
+selectJys.prototype.showText=function(ar){
+  for(i=0; i < this._$sublistLabel.length; i++){
+    var duration = 100 * i;
+    this._$sublistLabel.eq(i).delay(duration).animate({opacity:1});
+  }
+};
+selectJys.prototype.hideText=function(ar){
+  for(i=0; i < this._$sublistLabel.length; i++){
+    var duration = 100 * i;
+    this._$sublistLabel.eq(i).delay(duration).animate({opacity:0});
+  }
+};
+selectJys.prototype.selectText=function(idx){
+  var objThis = this;
+  this._$sublistLabel.eq(idx).stop(true).animate({'padding-left':'110%'},500,function(){
+    objThis._$sublistLabel.animate({opacity:0},function(){
+      objThis._$sublistLabel.attr('style','');
+    });
+  });
 };
 selectJys.prototype._selected=function(ar){
   var val = this._$sublistLi.eq(ar).text();
