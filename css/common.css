@@ -6,7 +6,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
 
-body { font-family: "맑은 고딕", "Malgun Gothic", "Nanum Barun Gothic", "돋움", "Dotum", "Arial", "sans-serif"; font-size: 16px; color: #000; line-height: 1; letter-spacing: 0; }
+body { font-family:"돋움", "Dotum", "Arial", "sans-serif"; font-size: 16px; color: #000; line-height: 1; letter-spacing: 0; }
 
 ol, ul { list-style: none; }
 
@@ -30,7 +30,7 @@ a, a:link, a:visited, a:active, a:hover, a, a:active, a:visited { color: inherit
 .selectbox .option {position: absolute; width:100%; background:#fff; z-index:200;}
 .selectbox .option ul.sub_list {display:none; border-left:1px solid #a8a8a8; border-right:1px solid #a8a8a8; border-bottom:1px solid #a8a8a8;}
 .selectbox .option ul.sub_list li{overflow:hidden; position:relative;}
-.selectbox .option ul.sub_list li span.bg_move {position:absolute; left:0; top:0; width:0%; height:100%; display:block; background:#555; z-index:-1}
-.selectbox .option ul.sub_list li > a {position:relative; display:block; padding:10px 0 10px 17px; color:#555; opacity:0; filter: alpha(opacity=50); z-index:50}
+.selectbox .option ul.sub_list li > a span.bg_move {position:absolute; left:0; top:0; display:inline-block; width:0%; height:100%; background:#555; z-index:-1}
+.selectbox .option ul.sub_list li > a {position:relative; display:block; padding:10px 0 10px 17px; color:#555; background:url('../images/common/clear_fix.png') repeat; opacity:0; filter: alpha(opacity=0); z-index:100}
 .selectbox .option ul.sub_list li > a:hover{color:#fff;}
 .selectbox .option ul.sub_list li input[type="checkbox"] {display:none}
